@@ -2,162 +2,138 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>QUANTUM REAPERS TOUR</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;background:#090a0e;color:#fff;font-family:Arial,sans-serif}
-button,input{font:inherit}
-button{cursor:pointer;border:0}
-:root{--red:#e51d3d;--panel:#151720;--muted:#9b9eaa}
-header{height:66px;background:#11131b;border-bottom:1px solid #292c36;display:flex;align-items:center;justify-content:space-between;padding:10px 16px;position:sticky;top:0;z-index:5}
-.brand{display:flex;align-items:center;gap:10px;font-weight:900;color:#ff2949;font-size:14px}
-.brand img{width:42px;height:42px;object-fit:cover;border-radius:50%;border:2px solid #a81730}
+body{margin:0;background:#08090d;color:#fff;font-family:Arial,sans-serif;padding-bottom:85px}
+:root{--red:#ed1738;--panel:#171923}
+button{cursor:pointer;border:0;font:inherit}
+header{height:65px;background:#11131b;display:flex;align-items:center;padding:10px 15px;justify-content:space-between;border-bottom:1px solid #292b35}
+.brand{display:flex;align-items:center;gap:9px;color:#ff3151;font-weight:900;font-size:14px}
+.brand img{width:40px;height:40px;border-radius:50%;object-fit:cover}
 .btn{background:var(--red);color:white;padding:11px 16px;border-radius:8px;font-weight:bold}
-.btn.secondary{background:#292c38}
-main{max-width:950px;margin:auto;padding:16px}
-.card{background:var(--panel);border:1px solid #292c38;border-radius:13px;padding:17px;margin:14px 0}
-.hero{background:linear-gradient(130deg,#420c1b,#171923 75%);border:1px solid #6a1a30;border-radius:15px;padding:25px 19px;margin-top:10px}
-.hero h1{font-size:27px;color:#ff3151;margin:9px 0}
-.muted{color:var(--muted);font-size:13px;line-height:1.6}
-.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-.stat{background:#1d202b;padding:15px;border-radius:10px}
-.stat strong{font-size:21px;color:#ff3655;display:block;margin-top:6px}
-nav{display:flex;gap:8px;overflow-x:auto;background:#11131b;padding:11px;position:sticky;top:66px;z-index:4}
-nav button{background:#252833;color:#ddd;padding:10px 13px;border-radius:7px;white-space:nowrap}
-nav button.active{background:var(--red);color:white}
+main{max-width:850px;margin:auto;padding:15px}
 .page{display:none}
 .page.active{display:block}
-input{width:100%;padding:13px;background:#0c0e15;color:white;border:1px solid #343744;border-radius:8px;margin:7px 0}
-label{font-size:13px;color:#ccc}
-h2{font-size:21px}
-h3{margin-top:0}
-.row{display:flex;justify-content:space-between;align-items:center;gap:10px}
-.tag{font-size:11px;color:#ff6b82;background:#3a1520;padding:6px 9px;border-radius:20px}
-.logo-large{width:90px;height:90px;object-fit:cover;border-radius:50%;border:2px solid var(--red)}
-#auth{max-width:440px;margin:45px auto;padding:20px}
+.banner{padding:25px 18px;border-radius:14px;background:linear-gradient(130deg,#440c1c,#191923);border:1px solid #641a2d;margin:12px 0 20px}
+.banner h1{font-size:25px;color:#ff3151}
+.muted{color:#9b9eaa;font-size:13px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.card{background:var(--panel);border:1px solid #292c38;border-radius:12px;padding:14px;margin-bottom:13px}
+.card h3{margin-top:0}
+.match{min-height:130px;display:flex;flex-direction:column;justify-content:space-between}
+.match strong{color:#ff3655}
+.bottom-nav{position:fixed;bottom:0;left:0;width:100%;height:76px;background:#08090d;border-top:1px solid #292b35;display:grid;grid-template-columns:repeat(4,1fr);z-index:10;padding-bottom:env(safe-area-inset-bottom)}
+.bottom-nav button{background:transparent;color:#aaa;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;font-size:12px}
+.bottom-nav button .ico{font-size:23px}
+.bottom-nav button.active{color:#315cff}
+.bottom-nav button.active .ico{color:#315cff}
+#auth{max-width:430px;margin:45px auto;padding:15px}
 #auth .card{text-align:center;padding:24px}
-#auth .logo-large{margin-bottom:10px}
-#dashboard{display:none}
-#message{font-size:13px;color:#ff8194;min-height:20px}
-footer{text-align:center;color:#777;padding:30px;font-size:12px}
-table{width:100%;border-collapse:collapse;font-size:13px}
-td,th{padding:12px 6px;border-bottom:1px solid #30323d;text-align:left}
-@media(min-width:700px){.stats{grid-template-columns:repeat(4,1fr)}}
+#auth img{width:90px;height:90px;object-fit:cover;border-radius:50%;border:2px solid var(--red)}
+input{width:100%;padding:13px;margin:8px 0;background:#0c0e15;color:white;border:1px solid #393b47;border-radius:8px}
+#message{color:#ff7187;font-size:13px}
+table{width:100%;border-collapse:collapse}
+td,th{text-align:left;padding:12px 5px;border-bottom:1px solid #30323d;font-size:13px}
+@media(min-width:650px){main{padding:22px}.banner h1{font-size:32px}}
 </style>
 </head>
 <body>
 
 <header>
  <div class="brand">
-  <img src="https://imagepaste.org/i/ehqccem4.jpg" alt="QR Logo">
-  <span>QUANTUM REAPERS</span>
+  <img src="https://imagepaste.org/i/ehqccem4.jpg">
+  QUANTUM REAPERS TOUR
  </div>
- <button class="btn secondary" id="headerAuth" onclick="logout()">Logout</button>
+ <button class="btn" id="logoutBtn" onclick="logout()" style="display:none">Logout</button>
 </header>
 
 <section id="auth">
  <div class="card">
-  <img class="logo-large" src="https://imagepaste.org/i/ehqccem4.jpg" alt="Logo">
+  <img src="https://imagepaste.org/i/ehqccem4.jpg">
   <h2>QUANTUM REAPERS TOUR</h2>
   <p class="muted">OFFICIAL ESPORTS PLATFORM</p>
-  <div id="loginFields">
-   <input id="email" type="email" placeholder="Email Address">
-   <input id="password" type="password" placeholder="Password (min 6 characters)">
-   <button class="btn" style="width:100%" onclick="login()">LOGIN</button>
-   <button class="btn secondary" style="width:100%;margin-top:9px" onclick="signup()">CREATE ACCOUNT</button>
-  </div>
+  <input id="email" type="email" placeholder="Email Address">
+  <input id="password" type="password" placeholder="Password">
+  <button class="btn" style="width:100%" onclick="login()">LOGIN</button>
+  <button class="btn" style="width:100%;margin-top:9px;background:#292c38" onclick="signup()">CREATE ACCOUNT</button>
   <p id="message"></p>
  </div>
 </section>
 
-<div id="dashboard">
-<nav>
- <button class="active" onclick="showPage('home',this)">Home</button>
- <button onclick="showPage('tournaments',this)">Tournaments</button>
- <button onclick="showPage('team',this)">My Team</button>
- <button onclick="showPage('points',this)">Point Table</button>
- <button onclick="showPage('wallet',this)">Wallet</button>
- <button onclick="showPage('profile',this)">Profile</button>
-</nav>
-
+<div id="app" style="display:none">
 <main>
-<section id="home" class="page active">
- <div class="hero">
+
+<section id="play" class="page active">
+ <div class="banner">
   <p>WELCOME TO THE BATTLEFIELD</p>
   <h1>QUANTUM REAPERS TOUR</h1>
-  <p class="muted">Compete • Dominate • Become a Legend</p>
-  <button class="btn" onclick="openPage('tournaments')">Explore Tournaments</button>
+  <p class="muted">COMPETE • DOMINATE • WIN</p>
  </div>
- <h2>Overview</h2>
- <div class="stats">
-  <div class="stat">My Tournaments<strong>0</strong></div>
-  <div class="stat">My Teams<strong>0</strong></div>
-  <div class="stat">Wallet Balance<strong>৳0</strong></div>
-  <div class="stat">Status<strong>Active</strong></div>
- </div>
- <div class="card">
-  <h3>Announcements</h3>
-  <p class="muted">No announcements yet.</p>
+
+ <h2>Available Matches</h2>
+ <div class="grid">
+  <div class="card match">
+   <div><strong>🏆 LOSS TO WIN</strong><p class="muted">Free Fire Tournament</p></div>
+   <p class="muted">No Match Found</p>
+  </div>
+  <div class="card match">
+   <div><strong>🔥 FREE MATCH</strong><p class="muted">Free Fire Tournament</p></div>
+   <p class="muted">No Match Found</p>
+  </div>
+  <div class="card match">
+   <div><strong>⚔️ BATTLE ROYALE</strong><p class="muted">Squad Match</p></div>
+   <p class="muted">Coming Soon</p>
+  </div>
+  <div class="card match">
+   <div><strong>🎮 CUSTOM ROOM</strong><p class="muted">Free Fire</p></div>
+   <p class="muted">Coming Soon</p>
+  </div>
  </div>
 </section>
 
-<section id="tournaments" class="page">
- <h2>🏆 Tournaments</h2>
- <div class="card">
-  <div class="row"><h3>Season 01</h3><span class="tag">UPCOMING</span></div>
-  <p class="muted">Free Fire • Online • 12 Teams • 3 Maps</p>
-  <h3>Prize Pool: ৳100</h3>
-  <p class="muted">1st: ৳50 | 2nd: ৳30 | 3rd: ৳20</p>
-  <button class="btn" onclick="openPage('team')">Register Team</button>
- </div>
+<section id="matches" class="page">
+ <h2>📋 My Matches</h2>
+ <div class="card"><p class="muted">You have no registered matches yet.</p></div>
 </section>
 
-<section id="team" class="page">
- <h2>👥 Team Registration</h2>
+<section id="results" class="page">
+ <h2>🏆 Results</h2>
  <div class="card">
-  <p class="muted">Register your squad. Four main players and one substitute.</p>
-  <input id="teamName" placeholder="Team Name">
-  <input id="captainName" placeholder="Captain Name">
-  <input id="captainUid" placeholder="Captain UID">
-  <input id="player2" placeholder="Player 2 UID">
-  <input id="player3" placeholder="Player 3 UID">
-  <input id="player4" placeholder="Player 4 UID">
-  <input id="substitute" placeholder="Substitute UID (Optional)">
-  <button class="btn" onclick="alert('Registration backend is not connected yet.')">Submit Registration</button>
- </div>
-</section>
-
-<section id="points" class="page">
- <h2>📊 Live Point Table</h2>
- <div class="card">
-  <p class="muted">Tournament results will appear here after admin publishes them.</p>
-  <table><thead><tr><th>Rank</th><th>Team</th><th>Points</th></tr></thead>
-  <tbody><tr><td colspan="3">No results published yet.</td></tr></tbody></table>
- </div>
-</section>
-
-<section id="wallet" class="page">
- <h2>💳 My Wallet</h2>
- <div class="card">
-  <p class="muted">Available Balance</p>
-  <h1>৳0.00</h1>
-  <p class="muted">Payment and transaction verification will be connected later.</p>
+  <table>
+   <tr><th>Rank</th><th>Team</th><th>Points</th></tr>
+   <tr><td colspan="3">No results published yet.</td></tr>
+  </table>
  </div>
 </section>
 
 <section id="profile" class="page">
- <h2>👤 Player Profile</h2>
+ <h2>👤 My Profile</h2>
  <div class="card">
   <p id="profileEmail"></p>
-  <p class="muted">Player account</p>
-  <button class="btn secondary" onclick="logout()">Logout</button>
+  <p class="muted">QUANTUM REAPERS PLAYER</p>
+  <button class="btn" onclick="logout()">Logout</button>
  </div>
 </section>
-</main>
-</div>
 
-<footer>© 2026 QUANTUM REAPERS TOUR</footer>
+</main>
+
+<nav class="bottom-nav">
+ <button class="active" onclick="go('play',this)">
+  <span class="ico">🎮</span>Play
+ </button>
+ <button onclick="go('matches',this)">
+  <span class="ico">📋</span>My Matches
+ </button>
+ <button onclick="go('results',this)">
+  <span class="ico">🏆</span>Results
+ </button>
+ <button onclick="go('profile',this)">
+  <span class="ico">👤</span>Profile
+ </button>
+</nav>
+</div>
 
 <script type="module">
 import {initializeApp} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
@@ -179,50 +155,38 @@ const firebaseConfig={
 
 const app=initializeApp(firebaseConfig);
 const auth=getAuth(app);
-
-const email=document.getElementById("email");
-const password=document.getElementById("password");
-const message=document.getElementById("message");
-
-window.signup=async()=>{
- message.textContent="Creating account...";
- try{
-  await createUserWithEmailAndPassword(auth,email.value.trim(),password.value);
-  message.textContent="Account created!";
- }catch(e){message.textContent=e.message;}
-};
+const msg=document.getElementById("message");
 
 window.login=async()=>{
- message.textContent="Logging in...";
- try{
-  await signInWithEmailAndPassword(auth,email.value.trim(),password.value);
-  message.textContent="Login successful!";
- }catch(e){message.textContent=e.message;}
+ msg.textContent="Logging in...";
+ try{await signInWithEmailAndPassword(auth,email.value.trim(),password.value)}
+ catch(e){msg.textContent=e.message}
 };
 
-window.logout=async()=>{
- try{await signOut(auth);}catch(e){message.textContent=e.message;}
+window.signup=async()=>{
+ msg.textContent="Creating account...";
+ try{await createUserWithEmailAndPassword(auth,email.value.trim(),password.value)}
+ catch(e){msg.textContent=e.message}
 };
 
-window.showPage=(id,btn)=>{
+window.logout=()=>signOut(auth);
+
+window.go=(id,btn)=>{
  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
  document.getElementById(id).classList.add("active");
- document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"));
- if(btn)btn.classList.add("active");
+ document.querySelectorAll(".bottom-nav button").forEach(b=>b.classList.remove("active"));
+ btn.classList.add("active");
  window.scrollTo(0,0);
 };
 
-window.openPage=(id)=>{
- const btn=[...document.querySelectorAll("nav button")].find(b=>b.getAttribute("onclick")?.includes("'"+id+"'"));
- window.showPage(id,btn);
-};
-
 onAuthStateChanged(auth,user=>{
- const logged=!!user;
- document.getElementById("auth").style.display=logged?"none":"block";
- document.getElementById("dashboard").style.display=logged?"block":"none";
- document.getElementById("headerAuth").style.display=logged?"block":"none";
- if(user)document.getElementById("profileEmail").textContent="Email: "+user.email;
+ document.getElementById("auth").style.display=user?"none":"block";
+ document.getElementById("app").style.display=user?"block":"none";
+ document.getElementById("logoutBtn").style.display=user?"block":"none";
+ if(user){
+  document.getElementById("profileEmail").textContent="Email: "+user.email;
+  go("play",document.querySelector(".bottom-nav button"));
+ }
 });
 </script>
 </body>
