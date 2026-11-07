@@ -1,24 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>QUANTUM REAPERS TOUR</title>
-  <style>
-    body {
-      background: #090909;
-      color: white;
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 50px 15px;
-    }
-    h1 { color: #e50925; }
-    p { color: #bbb; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QUANTUM REAPERS TOUR</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#08090d;color:white;font-family:Arial,sans-serif}
+header{background:#11131b;padding:18px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #292b35}
+.logo{color:#ed1735;font-weight:900;font-size:19px}
+button{background:#e51635;color:white;border:0;padding:12px 17px;border-radius:7px;font-weight:bold}
+nav{display:flex;gap:8px;overflow:auto;padding:12px;background:#11131b}
+nav button{background:#20222c;white-space:nowrap}
+main{padding:18px;max-width:900px;margin:auto}
+.hero{background:linear-gradient(135deg,#350914,#171923);padding:28px 20px;border-radius:14px;border:1px solid #672032;margin-top:15px}
+.hero h1{font-size:29px;color:#ff2949}
+.card{background:#151720;border:1px solid #292c38;border-radius:12px;padding:17px;margin:15px 0}
+.card h3{margin-top:0}
+.muted{color:#a4a7b4;font-size:14px}
+input{width:100%;padding:13px;margin:8px 0;background:#0d0f16;border:1px solid #363947;border-radius:7px;color:white}
+.section{display:none}
+.section.active{display:block}
+footer{text-align:center;color:#777;padding:25px}
+</style>
 </head>
 <body>
-  <h1>QUANTUM REAPERS TOUR</h1>
-  <p>Official Free Fire Tournament Platform</p>
-  <p>Coming Soon...</p>
+
+<header>
+<div class="logo">☠ QUANTUM REAPERS</div>
+<button onclick="show('login')">LOGIN</button>
+</header>
+
+<nav>
+<button onclick="show('home')">Home</button>
+<button onclick="show('tournaments')">Tournaments</button>
+<button onclick="show('register')">Register</button>
+<button onclick="show('profile')">My Team</button>
+</nav>
+
+<main>
+<section id="home" class="section active">
+<div class="hero">
+<p>OFFICIAL ESPORTS PLATFORM</p>
+<h1>QUANTUM REAPERS TOUR</h1>
+<p>Compete. Dominate. Become a Legend.</p>
+<button onclick="show('tournaments')">Explore Tournaments</button>
+</div>
+<div class="card">
+<h3>Welcome, Warriors!</h3>
+<p class="muted">Your ultimate Free Fire tournament platform.</p>
+</div>
+<div class="card">
+<h3>Platform Features</h3>
+<p>🏆 Tournament Registration</p>
+<p>👥 Team Management</p>
+<p>📊 Live Point Table</p>
+<p>🔐 Secure Player Account</p>
+</div>
+</section>
+
+<section id="tournaments" class="section">
+<h2>🏆 Tournaments</h2>
+<div class="card">
+<h3>QUANTUM REAPERS TOUR — Season 01</h3>
+<p class="muted">Free Fire • Online • 12 Teams</p>
+<p>Prize Pool: 100 TK</p>
+<p class="muted">Registration: Coming Soon</p>
+<button onclick="show('register')">Register Team</button>
+</div>
+</section>
+
+<section id="register" class="section">
+<h2>👥 Team Registration</h2>
+<div class="card">
+<p class="muted">Registration demo — backend connection pending.</p>
+<input placeholder="Team Name">
+<input placeholder="Captain Name">
+<input placeholder="Captain UID">
+<input placeholder="Player 2 UID">
+<input placeholder="Player 3 UID">
+<input placeholder="Player 4 UID">
+<input placeholder="Substitute UID (Optional)">
+<button onclick="alert('Backend setup is required for registration.')">Submit Registration</button>
+</div>
+</section>
+
+<section id="login" class="section">
+<h2>🔐 Player Login</h2>
+<div class="card">
+<input type="email" placeholder="Email Address">
+<input type="password" placeholder="Password">
+<button onclick="alert('Firebase Authentication will be connected next.')">Login</button>
+</div>
+</section>
+
+<section id="profile" class="section">
+<h2>👤 My Team</h2>
+<div class="card">
+<p class="muted">Login and Firebase connection required.</p>
+</div>
+</section>
+</main>
+
+<footer>© 2026 QUANTUM REAPERS TOUR</footer>
+
+<script>
+function show(id){
+document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+document.getElementById(id).classList.add('active');
+window.scrollTo(0,0);
+}
+</script>
 </body>
 </html>
