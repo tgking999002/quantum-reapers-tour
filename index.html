@@ -2,114 +2,99 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>QUANTUM REAPERS TOUR</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;background:#08090d;color:white;font-family:Arial,sans-serif}
-header{background:#11131b;padding:18px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #292b35}
-.logo{color:#ed1735;font-weight:900;font-size:19px}
-button{background:#e51635;color:white;border:0;padding:12px 17px;border-radius:7px;font-weight:bold}
-nav{display:flex;gap:8px;overflow:auto;padding:12px;background:#11131b}
-nav button{background:#20222c;white-space:nowrap}
-main{padding:18px;max-width:900px;margin:auto}
-.hero{background:linear-gradient(135deg,#350914,#171923);padding:28px 20px;border-radius:14px;border:1px solid #672032;margin-top:15px}
-.hero h1{font-size:29px;color:#ff2949}
-.card{background:#151720;border:1px solid #292c38;border-radius:12px;padding:17px;margin:15px 0}
-.card h3{margin-top:0}
-.muted{color:#a4a7b4;font-size:14px}
-input{width:100%;padding:13px;margin:8px 0;background:#0d0f16;border:1px solid #363947;border-radius:7px;color:white}
-.section{display:none}
-.section.active{display:block}
-footer{text-align:center;color:#777;padding:25px}
+body{margin:0;background:#090a10;color:white;font-family:Arial}
+header{padding:18px;background:#141620;color:#f22b49;font-weight:bold}
+main{max-width:650px;margin:auto;padding:20px}
+.card{background:#171a25;padding:20px;border-radius:12px;margin:18px 0}
+input{width:100%;padding:13px;margin:8px 0;background:#0b0d14;color:white;border:1px solid #444;border-radius:7px}
+button{padding:12px 18px;background:#e51d3d;color:white;border:0;border-radius:7px;margin:5px;cursor:pointer}
+.muted{color:#aaa;font-size:14px}
+#message{color:#ff6078}
 </style>
 </head>
 <body>
-
-<header>
-<div class="logo">☠ QUANTUM REAPERS</div>
-<button onclick="show('login')">LOGIN</button>
-</header>
-
-<nav>
-<button onclick="show('home')">Home</button>
-<button onclick="show('tournaments')">Tournaments</button>
-<button onclick="show('register')">Register</button>
-<button onclick="show('profile')">My Team</button>
-</nav>
-
+<header>☠ QUANTUM REAPERS TOUR</header>
 <main>
-<section id="home" class="section active">
-<div class="hero">
-<p>OFFICIAL ESPORTS PLATFORM</p>
-<h1>QUANTUM REAPERS TOUR</h1>
-<p>Compete. Dominate. Become a Legend.</p>
-<button onclick="show('tournaments')">Explore Tournaments</button>
-</div>
 <div class="card">
-<h3>Welcome, Warriors!</h3>
-<p class="muted">Your ultimate Free Fire tournament platform.</p>
+<h2>Welcome, Warrior!</h2>
+<p class="muted">Official Free Fire Tournament Platform</p>
+<p id="userStatus">Not logged in</p>
 </div>
-<div class="card">
-<h3>Platform Features</h3>
-<p>🏆 Tournament Registration</p>
-<p>👥 Team Management</p>
-<p>📊 Live Point Table</p>
-<p>🔐 Secure Player Account</p>
-</div>
-</section>
 
-<section id="tournaments" class="section">
-<h2>🏆 Tournaments</h2>
 <div class="card">
-<h3>QUANTUM REAPERS TOUR — Season 01</h3>
-<p class="muted">Free Fire • Online • 12 Teams</p>
-<p>Prize Pool: 100 TK</p>
-<p class="muted">Registration: Coming Soon</p>
-<button onclick="show('register')">Register Team</button>
+<h2>Player Account</h2>
+<input id="email" type="email" placeholder="Email Address">
+<input id="password" type="password" placeholder="Password (minimum 6 characters)">
+<button id="signup">Create Account</button>
+<button id="login">Login</button>
+<button id="logout">Logout</button>
+<p id="message"></p>
 </div>
-</section>
-
-<section id="register" class="section">
-<h2>👥 Team Registration</h2>
-<div class="card">
-<p class="muted">Registration demo — backend connection pending.</p>
-<input placeholder="Team Name">
-<input placeholder="Captain Name">
-<input placeholder="Captain UID">
-<input placeholder="Player 2 UID">
-<input placeholder="Player 3 UID">
-<input placeholder="Player 4 UID">
-<input placeholder="Substitute UID (Optional)">
-<button onclick="alert('Backend setup is required for registration.')">Submit Registration</button>
-</div>
-</section>
-
-<section id="login" class="section">
-<h2>🔐 Player Login</h2>
-<div class="card">
-<input type="email" placeholder="Email Address">
-<input type="password" placeholder="Password">
-<button onclick="alert('Firebase Authentication will be connected next.')">Login</button>
-</div>
-</section>
-
-<section id="profile" class="section">
-<h2>👤 My Team</h2>
-<div class="card">
-<p class="muted">Login and Firebase connection required.</p>
-</div>
-</section>
 </main>
 
-<footer>© 2026 QUANTUM REAPERS TOUR</footer>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import {
+ getAuth,
+ createUserWithEmailAndPassword,
+ signInWithEmailAndPassword,
+ signOut,
+ onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
-<script>
-function show(id){
-document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
-document.getElementById(id).classList.add('active');
-window.scrollTo(0,0);
-}
+const firebaseConfig = {
+ apiKey: "AIzaSyAssl38GQP9PXeIwkilKlr9IzWS8JSoctA",
+ authDomain: "qrt-1025b.firebaseapp.com",
+ databaseURL: "https://qrt-1025b-default-rtdb.firebaseio.com",
+ projectId: "qrt-1025b",
+ storageBucket: "qrt-1025b.firebasestorage.app",
+ messagingSenderId: "1043110837806",
+ appId: "1:1043110837806:web:78803e518bfacce781e9bf",
+ measurementId: "G-W6028P7WN9"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+const email = document.getElementById("email");
+const password = document.getElementById("password");
+const message = document.getElementById("message");
+const userStatus = document.getElementById("userStatus");
+
+document.getElementById("signup").onclick = async () => {
+ try {
+  await createUserWithEmailAndPassword(auth,email.value,password.value);
+  message.textContent = "Account created successfully!";
+ } catch(e) {
+  message.textContent = e.message;
+ }
+};
+
+document.getElementById("login").onclick = async () => {
+ try {
+  await signInWithEmailAndPassword(auth,email.value,password.value);
+  message.textContent = "Login successful!";
+ } catch(e) {
+  message.textContent = e.message;
+ }
+};
+
+document.getElementById("logout").onclick = async () => {
+ try {
+  await signOut(auth);
+  message.textContent = "Logged out!";
+ } catch(e) {
+  message.textContent = e.message;
+ }
+};
+
+onAuthStateChanged(auth,user => {
+ userStatus.textContent = user ? "Logged in: " + user.email : "Not logged in";
+});
 </script>
 </body>
 </html>
